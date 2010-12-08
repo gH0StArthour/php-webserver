@@ -1,5 +1,5 @@
 #summary Differences from a normal web server, such as Apache.
-#labels Phase-Design
+#labels Phase-Design,Featured
 
 ==Persistent Scripts==
 In a normal web server, your PHP script exits after each request. In this embedded web server, your script continues begins running when the server starts, and finishes the server is stopped. Therefore, extra care needs to be taken in garbage collection (recommended to store everything in methods/functions), security (making sure user's data is handled only in that request) and stability (making sure your script doesn't die when invalid values are passed, etc). In other words, make sure you use good software development practices.
