@@ -1,4 +1,5 @@
 #summary Documentation of alternatives to PHP's core functions that must be used with php-webserver.
+#labels Phase-Implementation
 
 _Note: `$instance` refers to the instance of `WebServer` passed as the only parameter to the callback function._
 = `header()` =
