@@ -1,0 +1,44 @@
+#summary How to use, install and run PHPWebserver
+#labels Phase-Deploy
+
+= Install =
+ # Download the latest version from the downloads and unzip it.
+ # Move `WebServer.php` to your application's directory.
+
+= Usage =
+ # Include `WebServer.php` in your application.
+{{{
+require_once "WebServer.php";
+}}}
+ # Initialise the object.
+{{{
+$ws = new WebServer();
+}}}
+ # Handle the requests by passing a callback function by name, or a class and method, or an instance and method.
+{{{
+$ws->handleRequests("myFunction");
+// or
+$ws->handleRequests("MyClass", "myMethod");
+// or
+$ws->handleRequests($my_instance, "myMethod");
+}}}
+ # Write the callback function/method.
+{{{
+function myFunction($webserver) {
+ var_dump($_SERVER);
+}
+}}}
+
+= Run =
+ # Open a Terminal and navigate to your application.
+{{{
+$ login
+$ cd ~/MyApps/MyWebApp/
+}}}
+ # Run the application. _Note: `sudo` must be used if the port is below 1024._
+{{{
+$ php myphpscript.php
+// [or]
+$ sudo php myphpscript.php
+}}}
+ # The server will continue to run until you quit it (^C - Control + C).
