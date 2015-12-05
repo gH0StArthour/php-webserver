@@ -1,0 +1,5 @@
+**Note: This is a rehosted version of the example phpWebServer demonstrated last year. It is NOT production ready!**
+
+An embeddable web server designed for (and written in) PHP. it handles the control of the assigned port, setting common environmental variables (such as `$_SERVER`, `$_GET`, `$_POST` and `$_COOKIE`) and calling a function or method in your application to delegate the request.
+
+The web server is able to be packaged in, and controlled from, your application. Therefore eliminating the requirement that your user have a standard web server installed and configured to use your web application. Combined with a database such as a flat-file database, a Berkley DB or SQLite, PHP Embeddable Web server can remove the need for the user to have any specialised libraries installed, except PHP (which is preinstalled in many Unix and Linux distros).

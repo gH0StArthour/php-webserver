@@ -1,0 +1,14 @@
+## Persistent Scripts ##
+In a normal web server, your PHP script exits after each request. In this embedded web server, your script continues begins running when the server starts, and finishes the server is stopped. Therefore, extra care needs to be taken in garbage collection (recommended to store everything in methods/functions), security (making sure user's data is handled only in that request) and stability (making sure your script doesn't die when invalid values are passed, etc). In other words, make sure you use good software development practices.
+
+## Request Delegation ##
+PHP Web server is not a file-based web server, like Apache and Lighttpd. Instead, when a request comes in it calls your designated callback function (or method) which must then delegate the request to the relevant controllers (if you're using MVC) or something similar.
+
+## Security ##
+Although it can be run on any port, it's recommended to run PHP Webserver on ports above 1024. This is because many UNIX systems (including Mac OS X) require root user privileges to modify ports below 1024. If you do want to use a port below 1024, make sure to use "sudo php myappinit.php", which opens a major security hole. Furthermore, most uses of an embeddable web server use ports above 1024 to avoid conflicts with other services.
+
+## Simplicity and Speed ##
+PHP Webserver is actually faster than Apache at serving PHP. The reasons: PHP (and the scripts) are already running and it has far simpler, with less modules and processes to go through. The effect of this is just that, it's very simple. Only GET, POST and HEAD requests are handled by default (but you can modify it to support others easily!) and things commonly controlled by modules (like spell checking, error pages, user banning, authentication, etc) must be handled by your script
+
+## Differences in PHP ##
+Functions that deal with headers will not work by default (you'll have to write your own) as they go to the wrong buffer (a bug that is basically unfixable as its in the PHP core). The exceptions are `header()` and `setcookie()`, which have rewritten versions. They can be accessed with the server instance passed through the callback function/method. As `header()` is supported, writing alternative versions of all others is quite easy.

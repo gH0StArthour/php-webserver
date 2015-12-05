@@ -1,0 +1,37 @@
+_Note: `$instance` refers to the instance of `WebServer` passed as the only parameter to the callback function._
+# `header()` #
+## Original Mode ##
+```
+$instance->header($header);
+```
+### Parameters ###
+  * **`$header`** The full header in `Name: Value` format.
+### Example ###
+```
+$instance->header("Content-type: text/css");
+```
+
+## Alternative Mode ##
+```
+$instance->header($name, $value);
+```
+### Parameters ###
+  * **`$name`** The name of the header.
+  * **`$value`** The value of the header.
+### Example ###
+```
+$instance->header("Content-type", "text/css");
+```
+
+# `setcookie()` #
+```
+$instance->setcookie($name, $value[, $max_age]);
+```
+### Parameters ###
+  * **`$name`** The name of the cookie.
+  * **`$value`** The value of the cookie.
+  * **`$max_age`** The maximum age (in seconds, 0 is forever) of the cookie **(OPTIONAL, defaults to 0)**
+### Example ###
+```
+$instance->setcookie("username", "jsmith");
+```
